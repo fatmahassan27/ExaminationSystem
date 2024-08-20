@@ -1,0 +1,159 @@
+﻿using ExaminationSystem.BL.Interface;
+using ExaminationSystem.BL.ModelVM.DepartmentVM;
+using ExaminationSystem.DAL.Entities;
+using Microsoft.AspNetCore.Mvc;
+
+namespace ExaminationSystem.PL.Controllers.Admin
+{
+    public class DepartmentController : Controller
+    {
+        private readonly IDepartmentRepo _departmentRepo;
+        public DepartmentController(IDepartmentRepo departmentRepo)
+        {
+            _departmentRepo = departmentRepo;
+        }
+
+        public IActionResult Delete(int id)
+        {
+            int? UserId = HttpContext.Session.GetInt32("UserId");
+            int? RoleID = HttpContext.Session.GetInt32("RoleId");
+            if (UserId != null && RoleID == 1)
+            {
+                if (ModelState.IsValid)
+                {
+                    var department = _departmentRepo.GetById(id);
+
+
+                    if (department != null)
+                        _departmentRepo.DeleteDepartment(department);
+                    return RedirectToAction("DisplayDepartments");
+                }
+
+                return View();
+            }
+            return RedirectToAction("Login", "Account");
+
+        }
+        public IActionResult Edit(int id)
+        {
+            int? UserId = HttpContext.Session.GetInt32("UserId");
+            int? RoleID = HttpContext.Session.GetInt32("RoleId");
+            if (UserId != null && RoleID == 1)
+            {
+                if (id == null)
+                    return BadRequest();
+
+                var department = _departmentRepo.GetById(id);
+
+                var departmentVM = new DepartmentVM()
+                {
+                    DeptId = department.DeptId,
+                    DeptName = department.DeptName,
+                    DeptDesc = department.DeptDesc,
+
+                };
+
+                if (department == null)
+                    return NotFound();
+
+                return View("Edit", departmentVM);
+            }
+            return RedirectToAction("Login", "Account");
+
+        }
+
+
+        [HttpPost]
+
+        public IActionResult Edit(DepartmentVM departmentVM)
+        {
+            int? UserId = HttpContext.Session.GetInt32("UserId");
+            int? RoleID = HttpContext.Session.GetInt32("RoleId");
+            if (UserId != null && RoleID == 1)
+            {
+                if (ModelState.IsValid)
+                {
+                    _departmentRepo.UpdateDepartment(departmentVM);
+
+                    return RedirectToAction("DisplayDepartments");
+                }
+
+
+                return View(departmentVM);
+            }
+            return RedirectToAction("Login", "Account");
+
+
+        }
+        public IActionResult Create()
+        {
+            int? UserId = HttpContext.Session.GetInt32("UserId");
+            int? RoleID = HttpContext.Session.GetInt32("RoleId");
+            if (UserId != null && RoleID == 1)
+            {
+                var model = new DepartmentVM();
+
+                return View(model);
+            }
+            return RedirectToAction("Login", "Account");
+
+        }
+
+
+        [HttpPost]
+
+        public IActionResult Create(DepartmentVM department)
+        {
+            int? UserId = HttpContext.Session.GetInt32("UserId");
+            int? RoleID = HttpContext.Session.GetInt32("RoleId");
+            if (UserId != null && RoleID == 1)
+            {
+                if (!ModelState.IsValid)
+                {
+
+                    return View(department);
+                }
+
+                var newdepartment = new Department
+                {
+                    DepartmentName = department.DeptName,
+                    DepartmentDesc = department.DeptDesc,
+
+                };
+
+                _departmentRepo.AddDepartment(newdepartment);
+
+                return RedirectToAction("DisplayDepartments");
+            }
+            return RedirectToAction("Login", "Account");
+
+
+        }
+        public IActionResult DisplayDepartments()
+        {
+            int? UserId = HttpContext.Session.GetInt32("UserId");
+            int? RoleID = HttpContext.Session.GetInt32("RoleId");
+            if (UserId != null && RoleID == 1)
+            {
+                List<DepartmentVM> departments = new List<DepartmentVM>();
+                departments = _departmentRepo.GetAllDepartments();
+                return View("DisplayDepartments", departments);
+
+            }
+            return RedirectToAction("Login", "Account");
+
+        }
+        public IActionResult GetDepartmentById(int id)
+        {
+            int? UserId = HttpContext.Session.GetInt32("UserId");
+            int? RoleID = HttpContext.Session.GetInt32("RoleId");
+            if (UserId != null && RoleID == 1)
+            {
+                var department = _departmentRepo.GetById(id);
+                return View("GetDepartmentById", department);
+            }
+            return RedirectToAction("Login", "Account");
+        }
+
+    }
+}

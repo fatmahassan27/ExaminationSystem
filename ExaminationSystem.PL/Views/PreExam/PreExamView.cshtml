@@ -1,0 +1,218 @@
+﻿@using ExaminationSystem.DAL.Entities
+@using Microsoft.AspNetCore.Mvc.TagHelpers;
+
+@model Exam
+
+@{
+    ViewData["Title"] = "PreExamView";
+    Layout = null;
+}
+
+@{
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Exam Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(180deg,
+                    #b885af,
+                    #AFCBFF);
+        }
+
+        .container {
+        
+            height: 60%;
+            width: 100%;
+        }
+
+        .card {
+            background:rgba(252, 252, 252, 0.247);
+            backdrop-filter: blur(1rem);
+            width: 80%;
+            margin-left: 10%;
+            height: 80%;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5rem;
+            box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+        }
+
+        .text-center {
+            color: rgb(240, 240, 240);
+            font: bolder;
+            font-style: italic;
+            font-stretch: wider;
+            font-size: 45px;
+        }
+
+        .exam-info {
+            margin-bottom: 20px;
+            margin-right: 30%;
+        }
+
+        .info-row {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .label {
+            font-weight: bold;
+            color: rgb(253, 248, 248);
+            margin-left: 9%;
+            min-width: 100px;
+        }
+
+        .value {
+            color: rgb(7, 6, 7);
+            margin-left: 25%;
+        }
+
+        .btn-start-exam {
+            padding: 10px 30px;
+            background-color: #ffffff86;
+            color: #ffffff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-start-exam:hover {
+            background-color: #727070b6;
+            color: white;
+        }
+
+        media only screen and (min-width: 600px)
+        {
+            .body {
+                font-family: Arial, sans-serif;
+                height: 100vh;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                background: linear-gradient(180deg,
+                        #b885af,
+                        #AFCBFF);
+            }
+        
+
+        .container {
+            height: 60%;
+            width: 100%
+        }
+
+        .card {
+            background: rgba(252, 252, 252, 0.247);
+            backdrop-filter: blur(1rem);
+            width: 150%;
+            margin-left: 60%;
+            height: 80%;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5rem;
+            box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+        }
+
+        .text-center {
+            margin-top: 1px;
+            color: rgb(240, 240, 240);
+            font: bolder;
+            font-style: italic;
+            font-stretch: wider;
+            font-size: 45px;
+        }
+
+        .exam-info {
+            margin-bottom: 20px;
+            margin-right: 50%;
+        }
+
+        .info-row {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .label {
+            font-weight: bold;
+            color: rgb(253, 248, 248);
+            min-width: 100px;
+        }
+
+        .value {
+            color: rgb(7, 6, 7);
+            margin-left: 20%;
+            
+        }
+
+        .btn-start-exam {
+            padding: 10px 30px;
+            background-color: #ffffff86;
+            color: #ffffff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-start-exam:hover {
+            background-color: #727070b6;
+            color: white;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="text-center">Exam Information
+                <hr>
+            </h1>
+
+            <div class="exam-info">
+
+                <div class="info-row">
+                    <span class="label">Exam:</span>
+                    <span class="value">@Model.ExamName</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Exam Duration:</span>
+                    <span class="value">1 hours</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Date:</span>
+                    <span class="value" id="current-date"></span>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</body>
+
+</html>

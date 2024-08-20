@@ -1,0 +1,58 @@
+<header class="header" id="header">
+    <div class="header_toggle">
+        <i class="fa-solid fa-bars" id="header-toggle"></i>
+    </div>
+    <div>
+        <ul>
+            <li class="nav_logo" style=" text-decoration: none">
+                <img src="~/assests/logo.png" style="height:60px; margin-top:25px;">
+            </li>
+
+        </ul>
+
+    </div>
+</header>
+
+<!-- Sidebar Section -->
+<div class="l-navbar" id="nav-bar" style="  background: linear-gradient(90deg,  #cfbee9, #AFCBFF);">
+    <nav class="nav">
+        <div>
+
+            <!-- Navigation Links -->
+            <div class="nav_list">
+                <a active-when="Student" class="nav_link active" style=" text-decoration: none" asp-action="getAll" asp-controller="Student">
+                    <i class="fa-sharp fa-solid fa-person"></i>
+                    <span>Students</span>
+                </a>
+                <a active-when="Instructor" class="nav_link" style=" text-decoration: none" asp-action="getAll" asp-controller="Instructor">
+                    <i class="fa-sharp fa-solid fa-person-chalkboard"></i>
+                    <span>Instructors</span>
+                </a>
+                <a active-when="Course" class="nav_link" style=" text-decoration: none" asp-action="getAll" asp-controller="Course">
+                    <i class="fa-sharp fa-solid fa-bars-progress"></i>
+                    <span>Course</span>
+                </a>
+                <a active-when="Exam" class="nav_link" style=" text-decoration: none" asp-action="getAll" asp-controller="Exam">
+                    <i class="fa-sharp fa-solid fa-pen-to-square"></i>
+                    <span>Exam</span>
+                </a>
+                <a active-when="Department" class="nav_link" style=" text-decoration: none" asp-action="DisplayDepartments" asp-controller="Department">
+                    <i class="fa-solid fa-building"></i>
+                    <span>Department</span>
+                </a>
+                <a active-when="Report" class="nav_link" style=" text-decoration: none" asp-action="Index" asp-controller="Report">
+                    <i class="fa-solid fa-square-poll-horizontal"></i>
+                    <span>Report</span>
+                </a>
+                <a asp-action="Login" asp-controller="Account" class="nav_link" style=" text-decoration: none">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span> Logout</span>
+                </a>
+
+            </div>
+
+
+
+        </div>
+    </nav>
+</div>

@@ -1,0 +1,76 @@
+﻿@using ExaminationSystem.BL.ModelVM.Courses
+@model List<GetALLCourseVM>
+@{
+   
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+<div class="card m-2" style="width:60rem;margin:auto;">
+    <h1 class="m-1" style="color: #9e6bea ; text-align:center;">Courses</h1>
+    <div class="row">
+        <div class="col-8">
+        </div>
+        <div class="col-4 text-end">
+            <a class="btn btn-outline-primary p-1  m-2 pull-right" asp-controller="Course" asp-action="InsertCourse"> <i class="fa-regular fa-address-card"></i> </a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="myTable" class="table table-row-dashed table-row-gray-300 gy-7" style="Width:100%;  color:gray">
+                <thead>
+        <tr>
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Course Duration</th>
+            <th>Course Instructor</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.CourseId</td>
+                <td>@item.CourseName</td>
+                <td>@item.CourseHours</td>
+                <td>
+                    @foreach (var ins in @item.Ins)
+                    {
+                        <p >@ins.User.UserFirstName @ins.User.UserLastName</p>
+                    }
+                </td>
+                <td class="dropdown">
+                          
+                        <button class="btn btn-sm btn-icon  btn-active-light-primary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bars" style="color:#AFCBFF"></i>
+                        </button>
+                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                       <a class="dropdown-item" asp-action="DeleteCourse" asp-controller="Course" asp-route-id="@item.CourseId">Delete</a>
+                       <a class="dropdown-item" asp-action="EditCourse" asp-controller="Course" asp-route-id="@item.CourseId">Update</a>
+                       <a class="dropdown-item" asp-action="GenerateExam" asp-controller="GenerateExam" asp-route-id="@item.CourseId">GenerateExam</a>
+
+                       </ul>
+                         
+                 </td>
+            </tr>
+       }
+     
+       
+    </tbody>
+</table>
+        </div>
+    </div>
+</div>
+</div>
+@section JS {
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+    <partial name="~/Views/Shared/Admin/_JSDataTable.cshtml" />
+
+}
+
+
+
+

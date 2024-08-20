@@ -1,0 +1,44 @@
+﻿@using ExaminationSystem.DAL.Entities
+@model Exam
+
+@{
+    Layout = "Student/_Layout";
+    var includes = Model.Includes.ToList();
+    var radioBtnGroup = "question";
+}
+
+<form method="post" asp-action="Index" asp-route-id="@Model.ExamId">
+    @for (var i = 0; i < Model.Includes.Count; i++)
+    {
+        radioBtnGroup = $"{radioBtnGroup}{i}";
+
+        var qsNum = i + 1;
+        <div class="question shadow bg-white rounded">
+            <p class="qs-number" style="background-color:#9e6bea">Question @qsNum</p>
+            <p class="qs-title">@includes[i].Question.QuestionTitle</p>
+            <div class="dpx">
+                <div class="py">
+                    @{
+                        var choices = includes[i].Question.MultipleChoices.ToList();
+                    }
+                    @foreach (var choice in choices)
+                    {
+                        <label>
+                            <input asp-for="@Model.Includes.ToList()[i].StudentAnswer"
+                                   type="radio"
+                                   class="option-input radio"
+                                   name="Includes[@i].StudentAnswer"
+                                   value="@choice.MultipleChoiceId"/>
+                            @choice.MultipleChoiceTitle
+                        </label>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="finish d-grid">
+        <input type="submit" value="Submit" class="btn  " style="background-color:#9e6bea; width:200px" />
+        <input asp-for="ExamId" type="hidden"/>
+    </div>
+</form>

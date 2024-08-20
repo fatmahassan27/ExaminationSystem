@@ -1,0 +1,50 @@
+﻿@model List<StudentInfo>
+@{
+    ViewData["Title"] = "StudentInformation";
+    //Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+
+<div class="card m-2" style="width:60rem;margin:auto;">
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="myTable" class="table table-row-dashed  table-row-gray-300" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                       
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.studentId</td>
+                            <td>@item.UserName</td>
+                            <td>@item.userFname</td>
+                            <td>@item.userLname</td>
+                            <td>@item.emailAddress</td>
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Js {
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+    <partial name="~/Views/Shared/Admin/_JSDataTable.cshtml" />
+
+}

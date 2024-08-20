@@ -1,0 +1,43 @@
+﻿@using ExaminationSystem.BL.ModelVM.Courses
+@model EditCourseVM
+@{
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+
+
+
+<div class="card m-5" style="width:60rem;margin:auto; background: linear-gradient(90deg,  #cfbee9, #AFCBFF);">
+    <h1 style="color: #4b85ef">Edit</h1>
+    <div class="card-body"> 
+
+        <form method="post" style="color:gray;">
+
+            <div>
+
+                <input type="hidden" hidden asp-for="CourseId" class="form-control" id="exampleInputEmail1" aria-describedby="">
+            </div>
+            <div>
+                <label asp-for="CourseName" class="form-label">Course Name</label>
+                <input type="text" asp-for="CourseName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span asp-validation-for="CourseName" class="text-danger"></span>
+
+            </div>
+            <div>
+                <label asp-for="CourseHours" class="form-label">Course Duration</label>
+                <input type="text" asp-for="CourseHours" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span asp-validation-for="CourseHours" class="text-danger"></span>
+            </div>
+
+            <div>
+                <label asp-for="CourseHours" class="form-label">Course Instructor</label>
+                <input type="text" asp-for="CourseHours" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span asp-validation-for="CourseHours" class="text-danger"></span>
+            </div>
+
+
+            <button type="submit" class="btn m-1" style="background-color: #AFCBFF ; color:white; width:150px">Submit</button>
+        </form>
+    </div>
+
+
+</div>

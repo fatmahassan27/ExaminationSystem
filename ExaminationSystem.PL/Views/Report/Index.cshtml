@@ -1,0 +1,137 @@
+﻿@{
+    ViewData["Title"] = "Index";
+     Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+
+<div style="height:50px"></div>
+
+<div class="row">
+     <div class="col-4 m-5">
+
+        <div class="container" style="background-color:white" > 
+            <i class="fa-regular fa-rectangle-list fa-2x mb-10 c-orange"></i>
+            <span class="d-block c-black fw-bold fs-25 mb-5">
+                Student Grades
+            </span>
+
+
+            <button class="btn dropdown btn-sm btn-icon  btn-active--primary" style="background-color:#9e6bea; color:white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Select Student Grads
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                @foreach (var student in ViewBag.AllStudent)
+                {
+
+                    <li><a class="dropdown-item" asp-action="StudentGrade" asp-controller="Report" asp-route-id="@student.StId ">@student.UserFname @student.UserLname </a></li>
+                }
+
+            </ul>
+         </div>
+         </div>
+    <div class="col-4 m-5">
+
+        <div class="container" style="background-color:white">
+            <div class="box p-20 rad-10 fs-13 c-grey">
+                <i class="fa-regular fa-rectangle-list fa-2x mb-10 c-orange"></i>
+                <span class="d-block c-black fw-bold fs-25 mb-5">Exam Questions</span>
+
+
+                <button class="btn dropdown btn-sm btn-icon   btn-active--primary" style="background-color:#9e6bea; color:white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Select Exam
+
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    @foreach (var exam in ViewBag.AllExam)
+                    {
+
+                        <li><a class="dropdown-item" asp-action="ExamQuestion" asp-controller="Report" asp-route-id="@exam.ExamId">@exam.ExamName</a></li>
+                    }
+
+                </ul>
+
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-4"></div>
+</div>
+
+<div class="row">
+    <div class="col-4 m-5">
+        <div class="container" style="background-color:white"> 
+            <div class="box p-20 rad-10 fs-13 c-grey">
+                <i class="fa-regular fa-rectangle-list fa-2x mb-10 c-orange"></i>
+                <span class="d-block c-black fw-bold fs-25 mb-5">
+                    Instructor Courses
+                </span>
+
+
+                <button class="btn dropdown btn-sm btn-icon   btn-active--primary" style="background-color:#9e6bea; color:white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Select Instructor
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    @foreach (var inst in ViewBag.AllInstractor)
+                    {
+
+                        <li><a class="dropdown-item" asp-action="StudentCourse" asp-controller="Report" asp-route-id="@inst.InsId">@inst.UserFname @inst.UserLname </a></li>
+                    }
+
+                </ul>
+
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-4 m-5">
+        <div class="container" style="background-color:white">
+            <div class="box p-20 rad-10 fs-13 c-grey">
+                <i class="fa-regular fa-rectangle-list fa-2x mb-10 c-orange"></i>
+                <span class="d-block c-black fw-bold fs-25 mb-5">
+                    Student Grades
+                </span>
+
+
+                <button class="btn dropdown btn-sm btn-icon  btn-active--primary" style="background-color:#9e6bea; color:white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Select Student Grads
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    @foreach (var student in ViewBag.AllStudent)
+                    {
+
+                        <li><a class="dropdown-item" asp-action="StudentGrade" asp-controller="Report" asp-route-id="@student.StId ">@student.UserFname @student.UserLname </a></li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-4 m-5">
+        <div class="container" style="background-color:white">
+            <div class="box p-20 rad-10 fs-13 c-grey">
+                <i class="fa-regular fa-rectangle-list fa-2x m-10 c-orange"></i>
+                <span class="d-block c-black fw-bold fs-25 m-5">
+                    Student Answer
+                </span>
+
+                <button class="btn dropdown btn-sm btn-icon   btn-active--primary" style="background-color:#9e6bea ; color:white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Select Student
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    @foreach (var student in ViewBag.AllStudent)
+                    {
+
+                        <li><a class="dropdown-item" asp-action="ExamStudentAnswerView" asp-controller="Report" asp-route-id="@student.StId">@student.UserFname @student.UserLname </a></li>
+                    }
+
+                </ul>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>

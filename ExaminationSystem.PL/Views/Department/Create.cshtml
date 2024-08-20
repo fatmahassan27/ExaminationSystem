@@ -1,0 +1,46 @@
+﻿@using ExaminationSystem.BL.ModelVM.DepartmentVM;
+
+@model DepartmentVM
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+<div class="card m-5" style="width:60rem;margin:auto;  background: linear-gradient(90deg,  #cfbee9, #AFCBFF);">
+    <h1>Add Department</h1>
+    <div class="card-body">
+        
+        <form method="post" asp-action="Create" style="color:gray;">
+
+            <div class="mb-3">
+                <div class="mb-3">
+                    <label asp-for="DeptName" class="form-label">Department Name</label>
+                    <input type="text" asp-for="DeptName" class="form-control" id="DepartmentName" maxlength="50">
+                    <span asp-validation-for="DeptName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DeptDesc" class="form-label">Department Description</label>
+                <input type="text" asp-for="DeptDesc" class="form-control" id="DeptDesc" aria-describedby="">
+                <span asp-validation-for="DeptDesc" class="text-danger"></span>
+            </div>
+
+   
+
+            <div class="mb-3">
+                <button type="submit" class="btn " style="background-color: #AFCBFF ; color:white;">Submit</button>
+
+            </div>
+
+        </form>
+        </<div>
+        </div>
+
+        @section JS {
+            <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+            <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+            <script src="~/js/validation-styling.js"></script>
+
+        }
+
+

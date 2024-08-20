@@ -1,0 +1,63 @@
+@using ExaminationSystem.BL.ModelVM.DepartmentVM;
+@model List<DepartmentVM>
+@{
+    ViewData["Title"] = "DisplayDepartments";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+<div class="card m-2" style="width:60rem;margin:auto;">
+    <h1 class="m-1" style="color: #9e6bea ; text-align:center;">Departments</h1>
+    <div class="row">
+        <div class="col-8">
+        </div>
+        <div class="col-4 text-end">
+            <a class="btn btn-outline-primary p-1  m-2 pull-right" asp-controller="Department" asp-action="Create"> <i class="fa-sharp fa-solid fa-user-plus"></i> </a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="myTable" class="display">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Department Name</th>
+                        <th>Department Description</th>
+                        <th>Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var department in Model)
+                    {
+                        <tr>
+                            <td>@department.DeptId</td>
+                            <td>@department.DeptName</td>
+                            <td>@department.DeptDesc</td>
+
+                            <td class="dropdown">
+                                <button class="btn btn-sm btn-icon  btn-active-light-primary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-sharp fa-solid fa-bars" style="color:#AFCBFF"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" asp-action="Edit" asp-controller="Department" asp-route-id="@department.DeptId">Edit</a></li>
+
+                                    <li><a class="dropdown-item" asp-action="Delete" asp-controller="Department" asp-route-id="@department.DeptId">Delete</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @section JS {
+        <script>
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+            })
+        </script>
+        <partial name="~/Views/Shared/Admin/_JSDataTable.cshtml" />
+
+    }
+
+
+

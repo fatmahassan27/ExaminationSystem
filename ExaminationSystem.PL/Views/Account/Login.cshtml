@@ -1,0 +1,69 @@
+﻿@model ExaminationSystem.BL.ModelVM.LoginVM
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/global.css" />
+    <link rel="stylesheet" href="~/css/ProfessorLogin.css" />
+</head>
+
+<body>
+    <div id="app">
+        <header class="container">
+            <nav class="navbar navbar-expand-lg">
+                <span class="fs-4 title">
+                    <a class="navbar-brand">
+                        <img src="~/assests/logo.png" />
+
+                    </a>
+                </span>
+
+            </nav>
+        </header>
+        <section class="section-one">
+            <div class="image-section" data-aos="fade-left">
+                <img src="~/assests/4.png" alt="img" />
+            </div>
+            <div class="form-section">
+                <form asp-action="Login">
+                    <h4>Welcome</h4>
+                    <fieldset class="inputs">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input asp-for="UserName" placeholder="UserName" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                        <input asp-for="Password" type="password" placeholder="Password"/>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                        <div id="btn-div">
+                            <button >Log In</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+
+
+
+
+    </div>
+    <!--Scripts part-->
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/validation-styling.js"></script>
+</body>
+
+</html>

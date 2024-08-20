@@ -1,0 +1,48 @@
+﻿@using ExaminationSystem.BL.ModelVM.DepartmentVM
+@model DepartmentVM
+@{
+    ViewData["Title"] = "Edit Department";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+
+<div class="card m-5" style="width:60rem;margin:auto; background: linear-gradient(90deg,  #cfbee9, #AFCBFF);">
+    <h1 style="color: #4b85ef">Edit Department</h1>
+    <div class="card-body">
+        <form method="post" asp-action="Edit" style="color:gray;">
+
+            <div class="mb-3">
+                <div class="mb-3">
+                    <input type="hidden" asp-for="DeptId" class="form-control" id="DepartmentName">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="mb-3">
+                    <label asp-for="DeptName" class="form-label">Department Name</label>
+                    <input type="text" asp-for="DeptName" class="form-control" id="DepartmentName" maxlength="50">
+                    <span asp-validation-for="DeptName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DeptDesc" class="form-label">Department Description</label>
+                <input type="text" asp-for="DeptDesc" class="form-control" id="DeptDesc" aria-describedby="">
+                <span asp-validation-for="DeptDesc" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" style="background-color: #AFCBFF ; color:white;" class="btn">Submit</button>
+                <a asp-controller="Department" asp-action="DisplayDepartments" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </form>
+        </<div>
+        </div>
+
+        @section JS {
+            <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+            <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+            <script src="~/js/validation-styling.js"></script>
+
+        }
+
+

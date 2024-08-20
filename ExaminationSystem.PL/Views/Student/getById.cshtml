@@ -1,0 +1,84 @@
+@using ExaminationSystem.BL.ModelVM.StudentVM;
+@model GetStudentByIdVM
+@{
+    ViewData["Title"] = "getById";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+
+<div class="profile-page m-20">
+    <!-- Start Overview -->
+    <div style="height:100px;"></div>
+    <div class="info-box w-full txt-c-mobile">
+        <!-- Start Information Row -->
+        <div class="container" style="background-color:white;">
+
+            
+
+            <div class="row">
+                <div class="col-md-4 col-sm-6 content-card">
+                    <div class="card-big-shadow">
+                        <div class="card card-just-text" data-background=" color" data-color="blue" data-radius="none">
+                            <div class="content">
+
+                                <h4 class="title" style="color:	#0f2746">General Information</h4>
+                                <div class="description">
+                                    <span >Full Name:</span>
+                                    <p>@Model.UserFname  @Model.UserLname</p>
+                                    <span >Adress:</span>
+                                    <span>@Model.StAddress</span>
+                                    
+                                </div>
+                            </div>
+                        </div> <!-- end card -->
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 content-card">
+                    <div class="card-big-shadow">
+                        <div class="card card-just-text" data-background="color" data-color="green" data-radius="none">
+                            <div class="content">
+                                <img class="rad-half mb-10" src="/Images/@Model.StImg" alt="" style="width:200px ; height:200px; border-radius:50%; border-color:white;" />
+                                <br />
+                                <h4 class="title" style="color:	#0f2746">Personal Information</h4>
+                                <div class="description">
+                                    <span >Email:</span>
+                                    <span>@Model.Email</span>
+                                    <br />
+                                    <span >User Name:</span>
+                                    <span>@Model.UserName</span>
+                                    <br />
+                                    <span >Department Name:</span>
+                                    <span>@Model.Dept.DepartmentName</span>
+
+                                </div>
+                            </div>
+                        </div> <!-- end card -->
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 content-card">
+                    <div class="card-big-shadow">
+                        <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+                            <div class="content">
+
+                                <h4 class="title" style="color:	#0f2746">Courses</h4>
+                                <p class="description">
+                                    <ul>
+                                        <li>
+                                            @foreach (var item in @Model.courses)
+                                            {
+                                                <a >@item.CourseName</a>
+                                            }
+                                        </li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div> <!-- end card -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Overview -->
+    </div>
+
+    

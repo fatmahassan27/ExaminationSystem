@@ -1,0 +1,80 @@
+@using ExaminationSystem.BL.ModelVM.InstructorVM;
+@model GetInstructorByIdVM
+@{
+    ViewData["Title"] = "GetInstructorById";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+
+<div class="profile-page m-20">
+    <!-- Start Overview -->
+       <div style="height:120px;"></div>
+        <div class="info-box w-full txt-c-mobile" >
+            <!-- Start Information Row -->
+            <div class="container" style="background-color:white;">
+
+            <div class="row">
+                <div class="col-md-4 col-sm-6 content-card">
+                    <div class="card-big-shadow">
+                        <div class="card card-just-text" data-background=" color" data-color="blue" data-radius="none">
+                            <div class="content">
+                                
+                                <h4 class="title" style="color:	#0f2746">General Information</h4>
+                                <div class="description">
+                                    <span >ID:</span>
+                                    <span>@Model.InsId </span>
+                                    <br />
+                                    <span>Full Name: </span>
+                                    <p> @Model.UserFname  @Model.UserLname</p>
+                                    
+                                    <br />
+                                    <span >Degree:</span>
+                                    <span>@Model.InsDegree </span>
+                                </div>
+                            </div>
+                        </div> <!-- end card -->
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 content-card">
+                    <div class="card-big-shadow">
+                        <div class="card card-just-text" data-background="color" data-color="green" data-radius="none">
+                            <div class="content">
+                                
+                                <h4 class="title" style="color:	#0f2746">Personal Information</h4>
+                                <div class="description">
+                                    <span >Salary:</span>
+                                    <span>@Model.InsSalary</span>
+                                    <br />
+                                    <span >User Name:</span>
+                                    <span>@Model.UserName</span>
+
+                                </div>
+                            </div>
+                        </div> <!-- end card -->
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 content-card">
+                    <div class="card-big-shadow">
+                        <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+                            <div class="content">
+                               
+                                <h4 class="title" style="color:	#0f2746">Department</h4>
+                                <p class="description">
+                                    <ul >
+                                        <li>
+                                            @foreach (var item in @Model.Departments)
+                                            {
+                                                <a >@item.DepartmentName</a>
+                                            }
+                                        </li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div> <!-- end card -->
+                    </div>
+                </div>
+            </div>
+    </div>
+    <!-- End Overview -->
+</div>

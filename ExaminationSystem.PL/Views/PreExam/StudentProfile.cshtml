@@ -1,0 +1,181 @@
+﻿@using ExaminationSystem.DAL.Entities
+@model Student
+
+@{
+    ViewData["Title"] = "StudentProfile";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/global.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        /* Custom Styles */
+
+
+        .container {
+            padding: 30px 0;
+        }
+
+
+
+        .header {
+            width: 100%;
+            height: var(--header-height);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            background-color: #ffffff;
+            z-index: var(--z-fixed);
+            transition: 0.5s;
+        }
+
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .user-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary, .btn-outline-primary {
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+
+        .breadcrumb-item.active {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    @if (Model != null)
+    {
+
+        <header class="header" id="header">
+            <div>
+                <i class="fa fa-sign-out" style="font-size:48px;color:#cfbee9"></i>
+            </div>
+            <div>
+
+
+                <img src="~/assests/logo.png" style="height:60px; margin-top:25px;">
+
+
+
+
+            </div>
+        </header>
+        <div class="container">
+            <div class="row mb-3">
+
+                <div class="col-4 mx-auto">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <img src="/Images/@Model.StudentImg" alt="User Avatar" class="user-avatar">
+                            <h4>@Model.Stu.UserFirstName @Model.Stu.UserLastName</h4>
+                            <p class="text-secondary">Full Stack Developer</p>
+
+                            <br />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row mb-3">
+
+                <div style="text-align:center">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Full Name</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">@Model.Stu.UserFirstName @Model.Stu.UserLastName</div>
+                            </div>
+                            <hr>
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">@Model.Stu.EmailAddress</div>
+                            </div>
+                            <hr>
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">City</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">@Model.StudentAddress</div>
+
+                            </div>
+                            <hr>
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Department</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">@Model.Department.DepartmentName</div>
+                            </div>
+                            <hr>
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Number Of Courses</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">@Model.Courses.Count</div>
+                            </div>
+                            <hr>
+
+
+                            <div class="dropdown">
+
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#cfbee9">
+                                    Choice Exam
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    @foreach (var exam in ViewBag.Exams)
+                                    {
+                                        <li>
+                                            <a class="dropdown-item" asp-controller="CurrentExam" asp-action="Index" asp-route-id="@exam.ExamId">@exam.ExamName</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+    <!-- Bootstrap JS -->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
